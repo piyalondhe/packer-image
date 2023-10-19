@@ -1,7 +1,7 @@
 {
     "variables": {
-        "vpc": "vpc-0da0b90dbaa0aae91",
-        "subnet": "subnet-0accb72fecdc85189",
+        "vpc": "vpc-063c174bef8a914b1",
+        "subnet": "subnet-0e7ca677a5767de20",
         "aws_region": "{{env `AWS_REGION`}}",
         "aws_ami_name": "amazon-linux_{{isotime \"02Jan2006\"}}"
     },
