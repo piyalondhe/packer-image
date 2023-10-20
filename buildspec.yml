@@ -29,9 +29,9 @@ phases:
       - echo "Filtering AMI ID of Latest AMI Created by packer"
       - export CUSTOM_AMI=$(aws ec2 describe-images --owners "995615868335" --filters "Name=tag:Name,Values=Packer*" --query "sort_by(Images, &CreationDate)[-1].ImageId" --output text)
       - echo "Creating EC2 Instance with latest AMI for use with AWS Code Inspector...."
-      - aws ec2 run-instances --image-id $CUSTOM_AMI --count 1 --instance-type t2.micro --key-name US-145 --security-group-ids sg-0a21109b130bcb16a --subnet-id subnet-086013f8d3152369d --associate-public-ip-address --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Packer1}]'
+      - aws ec2 run-instances --image-id $CUSTOM_AMI --count 1 --instance-type t2.micro --key-name packer-test --security-group-ids sg-021f5051a7515df80 --subnet-id subnet-0e7ca677a5767de20 --associate-public-ip-address --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Packer1}]'
       - sleep 180      
-      - echo "Executing AWS Inspector Assessment run"
-      - export TEMP_ARN=arn:aws:inspector:eu-central-1:995615868335:target/0-ekvuW0UV/template/0-JeqSxfL1
-      - aws inspector start-assessment-run --assessment-run-name PackerAssess --assessment-template-arn arn:aws:inspector:eu-central-1:995615868335:target/0-ekvuW0UV/template/0-JeqSxfL1
+     # - echo "Executing AWS Inspector Assessment run"
+     # - export TEMP_ARN=arn:aws:inspector:eu-central-1:995615868335:target/0-ekvuW0UV/template/0-JeqSxfL1
+     # - aws inspector start-assessment-run --assessment-run-name PackerAssess --assessment-template-arn arn:aws:inspector:eu-central-1:995615868335:target/0-ekvuW0UV/template/0-JeqSxfL1
       - echo "The End"
