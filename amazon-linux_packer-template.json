@@ -40,7 +40,8 @@
                 "curl -O https://inspector-agent.amazonaws.com/linux/latest/install",
 				"sudo bash install",
                 "sudo /etc/init.d/awsagent start",
-                "ps -ef|grep -i awsagent"                
+                "ps -ef|grep -i awsagent" ,
+                "echo 'hi'"               
             ]
         }
     ]
